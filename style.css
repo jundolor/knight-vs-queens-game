@@ -1,0 +1,220 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 0;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #2c3e50;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 10px;
+    background-color: #34495e;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+}
+
+.game-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 18px;
+}
+
+.timer {
+    font-weight: bold;
+    color: #f39c12;
+}
+
+.score {
+    font-weight: bold;
+    color: #2ecc71;
+}
+
+.chessboard {
+    width: 480px;
+    height: 480px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    border: 2px solid #2d3436;
+    max-width: 90vw;
+    max-height: 90vw;
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    cursor: pointer;
+    transition: all 0.2s;
+    max-width: 11.25vw;
+    max-height: 11.25vw;
+}
+
+.cell.white {
+    background-color: #f5f6fa;
+}
+
+.cell.black {
+    background-color: #7f8c8d;
+}
+
+.cell.highlight {
+    background-color: #74b9ff;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+}
+
+.cell.selected {
+    background-color: #55efc4;
+}
+
+.cell.capture-animation {
+    animation: capture-pulse 0.5s;
+}
+
+@keyframes capture-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); background-color: #e74c3c; }
+    100% { transform: scale(1); }
+}
+
+.buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.start-button, .restart-button, .pause-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.start-button {
+    background-color: #2ecc71;
+}
+
+.restart-button {
+    background-color: #3498db;
+}
+
+.pause-button {
+    background-color: #e67e22;
+}
+
+.start-button:hover {
+    background-color: #27ae60;
+}
+
+.restart-button:hover {
+    background-color: #2980b9;
+}
+
+.pause-button:hover {
+    background-color: #d35400;
+}
+
+.game-over, .level-complete, .game-paused {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+    z-index: 100;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    max-width: 90%;
+}
+
+.game-over {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+.level-complete {
+    background-color: rgba(46, 204, 113, 0.95);
+    color: white;
+}
+
+.game-paused {
+    background-color: rgba(52, 73, 94, 0.95);
+    color: white;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.score-display {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.level-score {
+    font-size: 20px;
+    color: #f39c12;
+}
+
+.total-score {
+    font-size: 24px;
+    color: #2ecc71;
+    margin-top: 10px;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 500px) {
+    h1 {
+        font-size: 24px;
+    }
+    
+    .game-info {
+        font-size: 14px;
+        gap: 10px;
+    }
+    
+    .cell {
+        font-size: 30px;
+    }
+    
+    .buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .start-button, .restart-button, .pause-button {
+        width: 100%;
+    }
+}
